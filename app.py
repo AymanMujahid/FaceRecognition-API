@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+import os
 import base64
 from PIL import Image
 import numpy as np
@@ -7,6 +8,15 @@ from deepface import DeepFace
 from sklearn.metrics.pairwise import cosine_similarity
 
 app = Flask(__name__)
+
+# CORS(app)
+# creating an API object
+# api = Api(app)
+
+#prediction api call
+# model = joblib.load(open('Model.pkl','rb'))
+
+# model_path = os.environ.get('\FaceRecognition-API/DeepFace_Encoding_DB.ipynb')
 
 # Function to encode image to base64
 def img_encoding(img_path):
@@ -51,6 +61,10 @@ def calculate_similarity(enco1, enco2):
     enco2_reshaped = enco2_array.reshape(1, -1)
     similarity_score = cosine_similarity(enco1_reshaped, enco2_reshaped)
     return similarity_score
+
+@app.route('/')
+def home():
+    return 'DeepFace Recognition API V1'
 
 # API endpoint for adding a new face encoding
 @app.route('/add_face_encoding', methods=['POST'])
