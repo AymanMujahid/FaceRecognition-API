@@ -8,18 +8,17 @@ RESTful API for face recognition built using Flask and DeepFace.
    ```bash
    git clone https://github.com/AymanMujahid/face-recognition-api.git
 
-   //////////////////////////////////////
 ## Usage
 ## Adding a Face Encoding
 Endpoint: /add_face_encoding (POST)
 
-Request   
+## Request   
 {
   "name": "name",
   "image": "base64_encoded_image_data"
 }
 
-Response
+## Response
 {
   "message": "Face encoding added successfully"
 }
@@ -27,13 +26,13 @@ Response
 ## Recognizing a Face
 Endpoint: /recognize_face (POST)
 
-Request
+## Request
 {
   "name": "name",
   "image": "base64_encoded_image_data"
 }
 
-Response
+## Response
 {
   "message": "Face recognized as name",
   "similarity": 0.85,
