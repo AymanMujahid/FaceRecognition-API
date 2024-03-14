@@ -40,5 +40,5 @@ Endpoint: /recognize_face (POST)
 }
 
 
-Replace `AymanMujahid` in [the clone URL](https://github.com/AymanMujahid/face-recognition-api.git) with AymanMujahid, and make sure to customize the content according to Face Recognition API functionality and requirements.
+[the clone URL](https://github.com/AymanMujahid/face-recognition-api.git), make sure to customize the content according to Face Recognition API functionality and requirements.
 
