@@ -14,14 +14,14 @@ Endpoint: /add_face_encoding (POST)
 
 ## Request   
 {
-  "name": "name",
+  "name" : "name",
   
-  "image": "base64_encoded_image_data"
+  "image" : "base64_encoded_image_data"
 }
 
 ## Response
 {
-  "message": "Face encoding added successfully"
+  "message" : "Face encoding added successfully"
 }
 
 ## Recognizing a Face
@@ -29,18 +29,18 @@ Endpoint: /recognize_face (POST)
 
 ## Request
 {
-  "name": "name",
+  "name" : "name",
   
-  "image": "base64_encoded_image_data"
+  "image" : "base64_encoded_image_data"
 }
 
 ## Response
 {
-  "message": "Face recognized as name",
+  "message" : "Face recognized as name",
   
-  "similarity": 0.85,
+  "similarity" : 0.85,
   
-  "embedding": [0.1, 0.2, ..., 0.9]
+  "embedding" : [0.1, 0.2, ..., 0.9]
 }
 
 ///////////////
