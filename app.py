@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify
 import os
-import base64
 from PIL import Image
 import numpy as np
 import sqlite3
@@ -8,22 +7,6 @@ from deepface import DeepFace
 from sklearn.metrics.pairwise import cosine_similarity
 
 app = Flask(__name__)
-
-# CORS(app)
-# creating an API object
-# api = Api(app)
-
-#prediction api call
-# model = joblib.load(open('Model.pkl','rb'))
-
-# model_path = os.environ.get('\FaceRecognition-API/DeepFace_Encoding_DB.ipynb')
-
-# Function to encode image to base64
-def img_encoding(img_path):
-    with open(img_path, 'rb') as image_file:
-        base64_bytes = base64.b64encode(image_file.read())
-        base64_string = base64_bytes.decode('utf-8')
-    return base64_string
 
 # Function to get face encodings using DeepFace
 def get_face_encodings_deepface(image_path):
@@ -69,12 +52,9 @@ def home():
 # API endpoint for adding a new face encoding
 @app.route('/add_face_encoding', methods=['POST'])
 def add_face_encoding():
-    data = request.json
-    name = data['name']
-    img_base64 = data['image']
-    img_data = base64.b64decode(img_base64)
-    with open('temp_img.jpg', 'wb') as f:
-        f.write(img_data)
+    data = request.files['image']
+    name = request.form['name']
+    data.save('temp_img.jpg')
     encoding = get_face_encodings_deepface('temp_img.jpg')
     insert_face_encoding(name, encoding)
     return jsonify({'message': 'Face encoding added successfully'})
@@ -82,12 +62,9 @@ def add_face_encoding():
 # API endpoint for recognizing a face
 @app.route('/recognize_face', methods=['POST'])
 def recognize_face():
-    data = request.json
-    name = data['name']
-    img_base64 = data['image']
-    img_data = base64.b64decode(img_base64)
-    with open('temp_img.jpg', 'wb') as f:
-        f.write(img_data)
+    data = request.files['image']
+    name = request.form['name']
+    data.save('temp_img.jpg')
     encoding = get_face_encodings_deepface('temp_img.jpg')
     all_encodings = fetch_all_encodings('face_recognition_25.db')
     for row in all_encodings:
