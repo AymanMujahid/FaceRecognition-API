@@ -27,7 +27,7 @@ def img_encoding(img_path):
 
 # Function to get face encodings using DeepFace
 def get_face_encodings_deepface(image_path):
-    encoding = DeepFace.represent(img_path=image_path, model_name='Facenet', enforce_detection=True)
+    encoding = DeepFace.represent(img_path=image_path, model_name='DeepFace_Encoding_DB', enforce_detection=True)
     return encoding[0]['embedding']
 
 # Function to insert face encoding into database
