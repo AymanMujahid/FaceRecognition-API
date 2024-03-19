@@ -16,7 +16,7 @@ Endpoint: /add_face_encoding (POST)
 {
   "name" : "name",
   
-  "image" : "base64_encoded_image_data"
+  "image" : "image"
 }
 
 ## Response
@@ -31,7 +31,7 @@ Endpoint: /recognize_face (POST)
 {
   "name" : "name",
   
-  "image" : "base64_encoded_image_data"
+  "image" : "image"
 }
 
 ## Response
